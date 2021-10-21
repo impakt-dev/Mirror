@@ -797,7 +797,7 @@ namespace Mirror
         // to prevent AddPlayer message after loading/unloading additive scenes
         SceneOperation clientSceneOperation = SceneOperation.Normal;
 
-        internal void ClientChangeScene(string newSceneName, SceneOperation sceneOperation = SceneOperation.Normal, bool customHandling = false)
+        internal void ClientChangeScene(string newSceneName, SceneOperation sceneOperation = SceneOperation.Normal, bool customHandling = true)
         {
             if (string.IsNullOrEmpty(newSceneName))
             {
@@ -1205,7 +1205,7 @@ namespace Mirror
             // This needs to run for host client too. NetworkServer.active is checked there
             if (NetworkClient.isConnected)
             {
-                ClientChangeScene(msg.sceneName, msg.sceneOperation, msg.customHandling);
+                ClientChangeScene(msg.sceneName, msg.sceneOperation, true);
             }
         }
 
